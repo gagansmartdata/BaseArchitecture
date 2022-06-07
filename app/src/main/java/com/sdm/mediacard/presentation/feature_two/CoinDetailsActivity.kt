@@ -14,7 +14,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.lifecycleScope
 import com.sdm.mediacard.R
 import com.sdm.mediacard.base.BaseActivity
 import com.sdm.mediacard.common.Constants
