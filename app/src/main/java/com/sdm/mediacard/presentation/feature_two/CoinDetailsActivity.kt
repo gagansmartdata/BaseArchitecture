@@ -14,6 +14,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.lifecycleScope
 import com.sdm.mediacard.R
 import com.sdm.mediacard.base.BaseActivity
 import com.sdm.mediacard.common.Constants
@@ -57,13 +58,33 @@ class CoinDetailsActivity : BaseActivity<ActivityCoinDetailsBinding>() {
                         viewModel.state().collectAsState().value.data?.let { showCoinDetailsText(data = it) }
                     }
         }
+
+
+        //Normal way of listening a Flow
+        /*lifecycleScope.launchWhenStarted {
+            viewModel.state().collect {
+              //it.isLoading  -> if true, show loading
+                //it.error  --> if not null show error (Typ)
+               *//* when (it.error) {
+                    is String -> {
+                        //handle string errors
+                    }
+                    is Int -> {
+                        //handle res id errors
+                    }
+                }*//*
+//                it.data your data us here
+            }
+        }*/
     }
 
     @Composable
     fun showCoinDetailsText(data : CoinDetail){
         Column(horizontalAlignment =Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,
-        modifier = Modifier.fillMaxSize().verticalScroll(rememberScrollState())) {
+        modifier = Modifier
+            .fillMaxSize()
+            .verticalScroll(rememberScrollState())) {
             Row(verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.Center,
                 modifier = Modifier.fillMaxWidth()) {
